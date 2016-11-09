@@ -1,11 +1,46 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-  	<title>Drawing House</title>
-</head>
-<body>
-    <canvas id="canvas" width="500" height="500" style="border: 1px solid black";></canvas>
-		<script src="js/canvas.js"></script>
-</body>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chae, Steven. Warje, Cameron</title>
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+    <body>
+        <header>Assignment 3 Animated Smoke House</header>
+        <body>
+            <canvas id="myCanvas" width="500" height="450"></canvas>
+            
+            <span id="slow">Slow</span>
+            <input type="range" id="speed" min="0.5" max="1.5" step="0.1" value="1.0" onchange="this.setAttribute('value',this.value);"/>
+            <span>Fast</span>
+            
+            <br></br>
+            <table>
+            <tr>
+                <th>Name</th>
+                <th>Student Number</th>
+                <th>Email</th>
+                <th>Set</th>
+            </tr>
+            <tr>
+                <td>HeeJe Chae</td>
+                <td>A00998991</td>
+                <td>hchae@my.bcit.ca</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>Cameron Warje</td>
+                <td>A00989216</td>
+                <td>cwarje@my.bcit.ca</td>
+                <td>B</td>
+            </tr>
+            </table>
+            <ul>
+                <lh>Completed:</lh>
+                <li>Animated Smoke</li>
+                <li>3D House Perspective</li>
+            </ul>
+        </body>
+    	<script src="js/cloud.js"></script>
+    </body>
 </html>
+
