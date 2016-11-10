@@ -304,6 +304,7 @@ function smoke() {
               trans2 -= 0.007;
           } else {
               y2 = 100;
+              x2 = 330;
               trans2 = 0.9;
           }
           if (x2 < 355 && x2 > 305){
@@ -316,6 +317,7 @@ function smoke() {
               trans3 -= 0.007;
           } else {
               y3 = 100;
+              x3 = 330;
               trans3 = 0.9;
           }
           if (x3 < 355 && x3 > 305){
