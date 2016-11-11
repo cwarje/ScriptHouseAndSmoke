@@ -216,23 +216,17 @@ house();
 
 var speed = document.getElementById("speed"); 
 var i = speed.value;
-var j = speed.value;
+//var j = speed.value;
 
 speed.addEventListener("change", function() {
     i = speed.value;
-    j = speed.value;
+    //j = speed.value;
 });
 
 function smoke() {
     var x1 = 330;
     var y1 = 110;
-    var x2 = 330;
-    var y2 = 110;
-    var x3 = 330;
-    var y3 = 110;
     var trans1 = 0.9;
-    var trans2 = 0.9;
-    var trans3 = 0.9;
     
     //draw cloud
     function drawSmoke1(x1, y1) {
@@ -245,14 +239,41 @@ function smoke() {
         ctx.bezierCurveTo(x + 53, y + 60, x + 23, y + 65, x + 20, y + 55);
         ctx.bezierCurveTo(x + 10, y + 65, x - 25, y + 55, x - 15, y + 35);
         ctx.bezierCurveTo(x - 35, y + 15, x - 10, y - 10, x, y);
-        ctx.globalAlpha = trans1;
+        //ctx.globalAlpha = trans1;
         ctx.closePath();
         ctx.lineWidth=2;
-        ctx.fillStyle="gray";
+        ctx.fillStyle='rgba(120, 120, 120, ' + trans1 + ')';
         ctx.fill();
     }
     
-    //draw cloud
+    function redraw() {  // this function redraws the c object every frame (FPS)
+          ctx.clearRect(200, 0, 300, 175); // clear the canvas
+        
+          if (y1 > -200) { 
+              y1 = y1 - i;
+              if (trans1 > 0 && trans1 < 1) {
+                  trans1 -= 0.004;
+              }
+          } else { 
+              y1 = 100;
+              trans1 = 0.9; // put the reset opacity
+          }
+          drawSmoke1(x1,y1); //draw the smoke
+        
+          requestAnimationFrame(redraw); //schedule this function to be run on the next frame
+    }
+    redraw();
+    setInterval(redraw(), 10); // run the move function every second (5- milliseconds)
+}
+//smoke();
+
+function smoke2() {
+
+    var x2 = 330;
+    var y2 = 110;
+
+    var trans2 = 0.9;
+    
     function drawSmoke2(x2, y2) {
         var x = x2;
         var y = y2;
@@ -263,14 +284,43 @@ function smoke() {
         ctx.bezierCurveTo(x + 53, y + 60, x + 23, y + 65, x + 20, y + 55);
         ctx.bezierCurveTo(x + 10, y + 65, x - 25, y + 55, x - 15, y + 35);
         ctx.bezierCurveTo(x - 35, y + 15, x - 10, y - 10, x, y);
-        ctx.globalAlpha = trans2;
+        //ctx.globalAlpha = trans2;
         ctx.closePath();
         ctx.lineWidth=2;
-        ctx.fillStyle='rgba(155, 155, 155, ' + trans2 + ')';
+        ctx.fillStyle='rgba(130, 130, 130, ' + trans2 + ')';
         ctx.fill();
     }
+ 
+    function redraw2() {  // this function redraws the c object every frame (FPS)
+          //ctx.clearRect(200, 0, 300, 175); // clear the canvas
     
-    //draw cloud
+          if (y2 > -200){
+              y2 = y2 - i - 0.1;
+             if (trans2 > 0 && trans2 < 1) {
+                 trans2 -= 0.005;
+             }
+          } else {
+              y2 = 100;
+              x2 = 330;
+              trans2 = 0.9;
+          }
+          if (x2 < 355 && x2 > 280){
+              x2 -= 0.2;
+          }
+          drawSmoke2(x2,y2);
+     
+          requestAnimationFrame(redraw2); //schedule this function to be run on the next frame
+    }
+    redraw2();
+    setInterval(redraw2(), 10); // run the move function every second (5- milliseconds)
+}
+
+function smoke3() {
+
+    var x3 = 330;
+    var y3 = 110;
+    var trans3 = 0.9;
+    
     function drawSmoke3(x3, y3) {
         var x = x3;
         var y = y3;
@@ -286,40 +336,14 @@ function smoke() {
         ctx.fillStyle='rgba(155, 155, 155, ' + trans3 + ')';
         ctx.fill();
     }
-
-    function redraw() {  // this function redraws the c object every frame (FPS)
-          ctx.clearRect(200, 0, 300, 175); // clear the canvas
-        /*
-          if (y1 > -200) { 
-              y1 = y1 - i;
-              if (trans1 > 0 && trans1 < 1) {
-                  trans1 -= 0.009;
-              }
-          } else { 
-              y1 = 100;
-              trans1 = 0.9; // put the reset opacity
-          }
-          drawSmoke1(x1,y1); //draw the smoke
-        */
-          if (y2 > -200){
-              y2 = y2 - i - 0.1;
-             if (trans2 > 0 && trans2 < 1) {
-                 trans2 -= 0.007;
-             }
-          } else {
-              y2 = 100;
-              x2 = 330;
-              trans2 = 0.9;
-          }
-          if (x2 < 355 && x2 > 305){
-              x2 -= 0.2;
-          }
-          drawSmoke2(x2,y2);
+    
+    function redraw3() {  // this function redraws the c object every frame (FPS)
+          //ctx.clearRect(200, 0, 300, 175); // clear the canvas
         
           if (y3 > -200){
-              y3 = y3 - j - 0.6;
+              y3 = y3 - i - 0.6;
               if (trans3 > 0 && trans3 < 1) {
-                 trans3 -= 0.007;
+                 trans3 -= 0.008;
              }
           } else {
               y3 = 100;
@@ -330,12 +354,13 @@ function smoke() {
               x3 += 0.2;
           }
         
-          
           drawSmoke3(x3,y3);
         
-          requestAnimationFrame(redraw); //schedule this function to be run on the next frame
+          requestAnimationFrame(redraw3); //schedule this function to be run on the next frame
     }
-    redraw();
-    setInterval(redraw(), 10); // run the move function every second (5- milliseconds)
+    redraw3();
+    setInterval(redraw3(), 10); // run the move function every second (5- milliseconds)
 }
 smoke();
+smoke2();
+smoke3();
