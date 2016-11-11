@@ -6,7 +6,7 @@ var movDown = 150;
 //draws hill
 function hill() {
     ctx.beginPath();
-    ctx.arc(250, 825, 500, 0,2 * Math.PI);
+    ctx.arc(250, 825, 500, 0, 2 * Math.PI);
     ctx.stroke();
     var grd = ctx.createRadialGradient(250, 850, 500, 90, 60, 100);
     grd.addColorStop(0.6, "green");
@@ -224,11 +224,11 @@ speed.addEventListener("change", function() {
 });
 
 function smoke() {
-    var x1 = 100 + 230;
+    var x1 = 330;
     var y1 = 110;
-    var x2 = 100 + 230;
+    var x2 = 330;
     var y2 = 110;
-    var x3 = 100 + 230;
+    var x3 = 330;
     var y3 = 110;
     var trans1 = 0.9;
     var trans2 = 0.9;
@@ -245,17 +245,17 @@ function smoke() {
         ctx.bezierCurveTo(x + 53, y + 60, x + 23, y + 65, x + 20, y + 55);
         ctx.bezierCurveTo(x + 10, y + 65, x - 25, y + 55, x - 15, y + 35);
         ctx.bezierCurveTo(x - 35, y + 15, x - 10, y - 10, x, y);
-        ctx.closePath();
-        ctx.lineWidth=2;
         ctx.globalAlpha = trans1;
+        ctx.closePath();
+        ctx.lineWidth=2;
         ctx.fillStyle="gray";
         ctx.fill();
     }
     
     //draw cloud
-    function drawSmoke2(x1, y1) {
-        var x = x1;
-        var y = y1;
+    function drawSmoke2(x2, y2) {
+        var x = x2;
+        var y = y2;
         ctx.beginPath();
         ctx.moveTo(x, y);
         ctx.bezierCurveTo(x, y - 20, x + 40, y - 20, x + 40, y + 5);
@@ -263,17 +263,17 @@ function smoke() {
         ctx.bezierCurveTo(x + 53, y + 60, x + 23, y + 65, x + 20, y + 55);
         ctx.bezierCurveTo(x + 10, y + 65, x - 25, y + 55, x - 15, y + 35);
         ctx.bezierCurveTo(x - 35, y + 15, x - 10, y - 10, x, y);
-        ctx.closePath();
-        ctx.lineWidth=2;
         ctx.globalAlpha = trans2;
-        ctx.fillStyle="gray";
+        ctx.closePath();
+        ctx.lineWidth=2;
+        ctx.fillStyle='rgba(155, 155, 155, ' + trans2 + ')';
         ctx.fill();
     }
     
     //draw cloud
-    function drawSmoke3(x1, y1) {
-        var x = x1;
-        var y = y1;
+    function drawSmoke3(x3, y3) {
+        var x = x3;
+        var y = y3;
         ctx.beginPath();
         ctx.moveTo(x, y);
         ctx.bezierCurveTo(x, y - 20, x + 40, y - 20, x + 40, y + 5);
@@ -283,25 +283,29 @@ function smoke() {
         ctx.bezierCurveTo(x - 35, y + 15, x - 10, y - 10, x, y);
         ctx.closePath();
         ctx.lineWidth=2;
-        ctx.globalAlpha = trans3;
-        ctx.fillStyle="gray";
+        ctx.fillStyle='rgba(155, 155, 155, ' + trans3 + ')';
         ctx.fill();
     }
 
     function redraw() {  // this function redraws the c object every frame (FPS)
           ctx.clearRect(200, 0, 300, 175); // clear the canvas
+        /*
           if (y1 > -200) { 
               y1 = y1 - i;
-              trans1 -= 0.006; // put the decrementing opacity
+              if (trans1 > 0 && trans1 < 1) {
+                  trans1 -= 0.009;
+              }
           } else { 
               y1 = 100;
               trans1 = 0.9; // put the reset opacity
           }
           drawSmoke1(x1,y1); //draw the smoke
-        
+        */
           if (y2 > -200){
               y2 = y2 - i - 0.1;
-              trans2 -= 0.007;
+             if (trans2 > 0 && trans2 < 1) {
+                 trans2 -= 0.007;
+             }
           } else {
               y2 = 100;
               x2 = 330;
@@ -313,8 +317,10 @@ function smoke() {
           drawSmoke2(x2,y2);
         
           if (y3 > -200){
-              y3 = y3 - i - 0.6;
-              trans3 -= 0.007;
+              y3 = y3 - j - 0.6;
+              if (trans3 > 0 && trans3 < 1) {
+                 trans3 -= 0.007;
+             }
           } else {
               y3 = 100;
               x3 = 330;
@@ -323,7 +329,10 @@ function smoke() {
           if (x3 < 355 && x3 > 305){
               x3 += 0.2;
           }
+        
+          
           drawSmoke3(x3,y3);
+        
           requestAnimationFrame(redraw); //schedule this function to be run on the next frame
     }
     redraw();
