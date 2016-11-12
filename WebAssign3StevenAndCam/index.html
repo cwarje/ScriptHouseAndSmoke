@@ -1,61 +1,69 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Chae, Steven. Warje, Cameron</title>
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
-    </head>
-    <body>
-        <header>Assignment 3 Animated Smoke House</header>
-        <body>
-            <canvas id="myCanvas" width="500" height="450"></canvas>
-            
-            <span id="slow">Slow</span>
-            <input type="range" id="speed" min="0.5" max="1.5" step="0.1" value="1" onchange="this.setAttribute('value',this.value);"/>
-            <span>Fast</span>
-            
-            <br></br>
-            <table>
-            <tr>
-                <th>Name</th>
-                <th>Student Number</th>
-                <th>Email</th>
-                <th>Set</th>
-            </tr>
-            <tr>
-                <td>HeeJe Chae</td>
-                <td>A00998991</td>
-                <td>hchae@my.bcit.ca</td>
-                <td>B</td>
-            </tr>
-            <tr>
-                <td>Cameron Warje</td>
-                <td>A00989216</td>
-                <td>cwarje@my.bcit.ca</td>
-                <td>B</td>
-            </tr>
-            </table>
-            <ul>
-                <lh>Completed:</lh>
-                <li>Based on HTML5 canvas control</li>
-                <li>Canvas between </li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-            <ul>
-                <lh>Challenges:</lh>
-                <li>Reseting the smokes opacity</li>
-                <li>Collaborating</li>
-            </ul>
-        </body>
-    	<script src="js/cloud.js"></script>
-    </body>
+<head>
+    <title>Chae, Steven. Warje, Cameron</title>
+    <meta charset="utf-8">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <header>
+        Assignment 3 Animated Smoke House
+    </header>
+    <canvas height="450" id="myCanvas" width="500"></canvas>
+    <div id = "sliderWithLabels">
+        <span>Slow</span>
+        <input id="speed" max="1.5" min="0.5" onchange="this.setAttribute('value',this.value);" step="0.1" type="range" value="1"> <span id="fast">Fast</span>
+    </div>
+    <br>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Student Number</th>
+            <th>Email</th>
+            <th>Set</th>
+        </tr>
+        <tr>
+            <td>HeeJe Chae</td>
+            <td>A00998991</td>
+            <td>hchae@my.bcit.ca</td>
+            <td>B</td>
+        </tr>
+        <tr>
+            <td>Cameron Warje</td>
+            <td>A00989216</td>
+            <td>cwarje@my.bcit.ca</td>
+            <td>B</td>
+        </tr>
+    </table>
+    <h4 class="list-heading">Completed:</h4>
+    <ul>
+        <li>Based on HTML5 canvas control.</li>
+        <li>Canvas is 450x500 pixels.</li>
+        <li>House appears 3D.</li>
+        <li>Smoke animated from chimney.</li>
+        <li>Range control slows and speeds up smoke animation.</li>
+        <li>Smoke animation matches house drawing style.</li>
+        <li>Animation is continuous and only stops on page close.</li>
+        <li>Shapes filled with standard canvas functions.</li>
+        <li>Web page names index.html.</li>
+        <li>Drawing is colourful and neat.</li>
+        <li>JavaScript and CSS places in external files.</li>
+        <li>Team names in &lt;table&gt; tag.</li>
+        <li>Web page styled.</li>
+        <li>Page contains required information.</li>
+        <li>Follows HTML5 standards</li>
+        <li>All styling done with CSS</li>
+        <li>Used HTML5 semantic elements</li>
+        <li>Proper JavaScript comments</li>
+    </ul>
+    <h4 class="list-heading">Challenges:</h4>
+    <ul>
+        <li>Reseting the smokes opacity</li>
+        <li>Collaborating</li>
+        <li>Animating smoke</li>
+        <li>Using gradients</li>
+    </ul>
+    <script src="js/cloud.js">
+    </script>
+</body>
 </html>
-
